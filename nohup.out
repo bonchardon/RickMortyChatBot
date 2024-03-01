@@ -1,0 +1,201 @@
+Error while calling `get_updates` one more time to mark all fetched updates as read: %s. Suppressing error to ensure graceful shutdown. When polling for updates is restarted, updates may be fetched again. Please adjust timeouts via `ApplicationBuilder` or the parameter `get_updates_request` of `Bot`.
+Traceback (most recent call last):
+  File "/Users/Maryna/Documents/RickMorty/venv/lib/python3.8/site-packages/anyio/_core/_tasks.py", line 115, in fail_after
+    yield cancel_scope
+  File "/Users/Maryna/Documents/RickMorty/venv/lib/python3.8/site-packages/httpcore/_synchronization.py", line 123, in wait
+    await self._anyio_event.wait()
+  File "/Users/Maryna/Documents/RickMorty/venv/lib/python3.8/site-packages/anyio/_backends/_asyncio.py", line 1621, in wait
+    await self._event.wait()
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/asyncio/locks.py", line 309, in wait
+    await fut
+asyncio.exceptions.CancelledError
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/Maryna/Documents/RickMorty/venv/lib/python3.8/site-packages/httpcore/_exceptions.py", line 10, in map_exceptions
+    yield
+  File "/Users/Maryna/Documents/RickMorty/venv/lib/python3.8/site-packages/httpcore/_synchronization.py", line 123, in wait
+    await self._anyio_event.wait()
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/contextlib.py", line 131, in __exit__
+    self.gen.throw(type, value, traceback)
+  File "/Users/Maryna/Documents/RickMorty/venv/lib/python3.8/site-packages/anyio/_core/_tasks.py", line 118, in fail_after
+    raise TimeoutError
+TimeoutError
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/Maryna/Documents/RickMorty/venv/lib/python3.8/site-packages/httpx/_transports/default.py", line 66, in map_httpcore_exceptions
+    yield
+  File "/Users/Maryna/Documents/RickMorty/venv/lib/python3.8/site-packages/httpx/_transports/default.py", line 366, in handle_async_request
+    resp = await self._pool.handle_async_request(req)
+  File "/Users/Maryna/Documents/RickMorty/venv/lib/python3.8/site-packages/httpcore/_async/connection_pool.py", line 248, in handle_async_request
+    raise exc
+  File "/Users/Maryna/Documents/RickMorty/venv/lib/python3.8/site-packages/httpcore/_async/connection_pool.py", line 239, in handle_async_request
+    connection = await status.wait_for_connection(timeout=timeout)
+  File "/Users/Maryna/Documents/RickMorty/venv/lib/python3.8/site-packages/httpcore/_async/connection_pool.py", line 36, in wait_for_connection
+    await self._connection_acquired.wait(timeout=timeout)
+  File "/Users/Maryna/Documents/RickMorty/venv/lib/python3.8/site-packages/httpcore/_synchronization.py", line 123, in wait
+    await self._anyio_event.wait()
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/contextlib.py", line 131, in __exit__
+    self.gen.throw(type, value, traceback)
+  File "/Users/Maryna/Documents/RickMorty/venv/lib/python3.8/site-packages/httpcore/_exceptions.py", line 14, in map_exceptions
+    raise to_exc(exc) from exc
+httpcore.PoolTimeout
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/Maryna/Documents/RickMorty/venv/lib/python3.8/site-packages/telegram/request/_httpxrequest.py", line 268, in do_request
+    res = await self._client.request(
+  File "/Users/Maryna/Documents/RickMorty/venv/lib/python3.8/site-packages/httpx/_client.py", line 1530, in request
+    return await self.send(request, auth=auth, follow_redirects=follow_redirects)
+  File "/Users/Maryna/Documents/RickMorty/venv/lib/python3.8/site-packages/httpx/_client.py", line 1617, in send
+    response = await self._send_handling_auth(
+  File "/Users/Maryna/Documents/RickMorty/venv/lib/python3.8/site-packages/httpx/_client.py", line 1645, in _send_handling_auth
+    response = await self._send_handling_redirects(
+  File "/Users/Maryna/Documents/RickMorty/venv/lib/python3.8/site-packages/httpx/_client.py", line 1682, in _send_handling_redirects
+    response = await self._send_single_request(request)
+  File "/Users/Maryna/Documents/RickMorty/venv/lib/python3.8/site-packages/httpx/_client.py", line 1719, in _send_single_request
+    response = await transport.handle_async_request(request)
+  File "/Users/Maryna/Documents/RickMorty/venv/lib/python3.8/site-packages/httpx/_transports/default.py", line 366, in handle_async_request
+    resp = await self._pool.handle_async_request(req)
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/contextlib.py", line 131, in __exit__
+    self.gen.throw(type, value, traceback)
+  File "/Users/Maryna/Documents/RickMorty/venv/lib/python3.8/site-packages/httpx/_transports/default.py", line 83, in map_httpcore_exceptions
+    raise mapped_exc(message) from exc
+httpx.PoolTimeout
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/Maryna/Documents/RickMorty/venv/lib/python3.8/site-packages/telegram/ext/_updater.py", line 433, in _get_updates_cleanup
+    await self.bot.get_updates(
+  File "/Users/Maryna/Documents/RickMorty/venv/lib/python3.8/site-packages/telegram/ext/_extbot.py", line 558, in get_updates
+    updates = await super().get_updates(
+  File "/Users/Maryna/Documents/RickMorty/venv/lib/python3.8/site-packages/telegram/_bot.py", line 525, in decorator
+    result = await func(self, *args, **kwargs)  # skipcq: PYL-E1102
+  File "/Users/Maryna/Documents/RickMorty/venv/lib/python3.8/site-packages/telegram/_bot.py", line 3584, in get_updates
+    await self._post(
+  File "/Users/Maryna/Documents/RickMorty/venv/lib/python3.8/site-packages/telegram/_bot.py", line 613, in _post
+    return await self._do_post(
+  File "/Users/Maryna/Documents/RickMorty/venv/lib/python3.8/site-packages/telegram/ext/_extbot.py", line 340, in _do_post
+    return await super()._do_post(
+  File "/Users/Maryna/Documents/RickMorty/venv/lib/python3.8/site-packages/telegram/_bot.py", line 641, in _do_post
+    return await request.post(
+  File "/Users/Maryna/Documents/RickMorty/venv/lib/python3.8/site-packages/telegram/request/_baserequest.py", line 200, in post
+    result = await self._request_wrapper(
+  File "/Users/Maryna/Documents/RickMorty/venv/lib/python3.8/site-packages/telegram/request/_baserequest.py", line 340, in _request_wrapper
+    raise exc
+  File "/Users/Maryna/Documents/RickMorty/venv/lib/python3.8/site-packages/telegram/request/_baserequest.py", line 330, in _request_wrapper
+    code, payload = await self.do_request(
+  File "/Users/Maryna/Documents/RickMorty/venv/lib/python3.8/site-packages/telegram/request/_httpxrequest.py", line 278, in do_request
+    raise TimedOut(
+telegram.error.TimedOut: Pool timeout: All connections in the connection pool are occupied. Request was *not* sent to Telegram. Consider adjusting the connection pool size or the pool timeout.
+Starting bot...
+Polling...
+Starting bot...
+Polling...
+431146613
+Starting bot...
+Polling...
+431146613
+sys:1: RuntimeWarning: coroutine 'Updater.stop' was never awaited
+RuntimeWarning: Enable tracemalloc to get the object allocation traceback
+Error while calling `get_updates` one more time to mark all fetched updates as read: %s. Suppressing error to ensure graceful shutdown. When polling for updates is restarted, updates may be fetched again. Please adjust timeouts via `ApplicationBuilder` or the parameter `get_updates_request` of `Bot`.
+Traceback (most recent call last):
+  File "/Users/Maryna/Documents/RickMorty/venv/lib/python3.8/site-packages/anyio/_core/_tasks.py", line 115, in fail_after
+    yield cancel_scope
+  File "/Users/Maryna/Documents/RickMorty/venv/lib/python3.8/site-packages/httpcore/_synchronization.py", line 123, in wait
+    await self._anyio_event.wait()
+  File "/Users/Maryna/Documents/RickMorty/venv/lib/python3.8/site-packages/anyio/_backends/_asyncio.py", line 1621, in wait
+    await self._event.wait()
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/asyncio/locks.py", line 309, in wait
+    await fut
+asyncio.exceptions.CancelledError
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/Maryna/Documents/RickMorty/venv/lib/python3.8/site-packages/httpcore/_exceptions.py", line 10, in map_exceptions
+    yield
+  File "/Users/Maryna/Documents/RickMorty/venv/lib/python3.8/site-packages/httpcore/_synchronization.py", line 123, in wait
+    await self._anyio_event.wait()
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/contextlib.py", line 131, in __exit__
+    self.gen.throw(type, value, traceback)
+  File "/Users/Maryna/Documents/RickMorty/venv/lib/python3.8/site-packages/anyio/_core/_tasks.py", line 118, in fail_after
+    raise TimeoutError
+TimeoutError
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/Maryna/Documents/RickMorty/venv/lib/python3.8/site-packages/httpx/_transports/default.py", line 66, in map_httpcore_exceptions
+    yield
+  File "/Users/Maryna/Documents/RickMorty/venv/lib/python3.8/site-packages/httpx/_transports/default.py", line 366, in handle_async_request
+    resp = await self._pool.handle_async_request(req)
+  File "/Users/Maryna/Documents/RickMorty/venv/lib/python3.8/site-packages/httpcore/_async/connection_pool.py", line 248, in handle_async_request
+    raise exc
+  File "/Users/Maryna/Documents/RickMorty/venv/lib/python3.8/site-packages/httpcore/_async/connection_pool.py", line 239, in handle_async_request
+    connection = await status.wait_for_connection(timeout=timeout)
+  File "/Users/Maryna/Documents/RickMorty/venv/lib/python3.8/site-packages/httpcore/_async/connection_pool.py", line 36, in wait_for_connection
+    await self._connection_acquired.wait(timeout=timeout)
+  File "/Users/Maryna/Documents/RickMorty/venv/lib/python3.8/site-packages/httpcore/_synchronization.py", line 123, in wait
+    await self._anyio_event.wait()
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/contextlib.py", line 131, in __exit__
+    self.gen.throw(type, value, traceback)
+  File "/Users/Maryna/Documents/RickMorty/venv/lib/python3.8/site-packages/httpcore/_exceptions.py", line 14, in map_exceptions
+    raise to_exc(exc) from exc
+httpcore.PoolTimeout
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/Maryna/Documents/RickMorty/venv/lib/python3.8/site-packages/telegram/request/_httpxrequest.py", line 268, in do_request
+    res = await self._client.request(
+  File "/Users/Maryna/Documents/RickMorty/venv/lib/python3.8/site-packages/httpx/_client.py", line 1530, in request
+    return await self.send(request, auth=auth, follow_redirects=follow_redirects)
+  File "/Users/Maryna/Documents/RickMorty/venv/lib/python3.8/site-packages/httpx/_client.py", line 1617, in send
+    response = await self._send_handling_auth(
+  File "/Users/Maryna/Documents/RickMorty/venv/lib/python3.8/site-packages/httpx/_client.py", line 1645, in _send_handling_auth
+    response = await self._send_handling_redirects(
+  File "/Users/Maryna/Documents/RickMorty/venv/lib/python3.8/site-packages/httpx/_client.py", line 1682, in _send_handling_redirects
+    response = await self._send_single_request(request)
+  File "/Users/Maryna/Documents/RickMorty/venv/lib/python3.8/site-packages/httpx/_client.py", line 1719, in _send_single_request
+    response = await transport.handle_async_request(request)
+  File "/Users/Maryna/Documents/RickMorty/venv/lib/python3.8/site-packages/httpx/_transports/default.py", line 366, in handle_async_request
+    resp = await self._pool.handle_async_request(req)
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/contextlib.py", line 131, in __exit__
+    self.gen.throw(type, value, traceback)
+  File "/Users/Maryna/Documents/RickMorty/venv/lib/python3.8/site-packages/httpx/_transports/default.py", line 83, in map_httpcore_exceptions
+    raise mapped_exc(message) from exc
+httpx.PoolTimeout
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/Maryna/Documents/RickMorty/venv/lib/python3.8/site-packages/telegram/ext/_updater.py", line 433, in _get_updates_cleanup
+    await self.bot.get_updates(
+  File "/Users/Maryna/Documents/RickMorty/venv/lib/python3.8/site-packages/telegram/ext/_extbot.py", line 558, in get_updates
+    updates = await super().get_updates(
+  File "/Users/Maryna/Documents/RickMorty/venv/lib/python3.8/site-packages/telegram/_bot.py", line 525, in decorator
+    result = await func(self, *args, **kwargs)  # skipcq: PYL-E1102
+  File "/Users/Maryna/Documents/RickMorty/venv/lib/python3.8/site-packages/telegram/_bot.py", line 3584, in get_updates
+    await self._post(
+  File "/Users/Maryna/Documents/RickMorty/venv/lib/python3.8/site-packages/telegram/_bot.py", line 613, in _post
+    return await self._do_post(
+  File "/Users/Maryna/Documents/RickMorty/venv/lib/python3.8/site-packages/telegram/ext/_extbot.py", line 340, in _do_post
+    return await super()._do_post(
+  File "/Users/Maryna/Documents/RickMorty/venv/lib/python3.8/site-packages/telegram/_bot.py", line 641, in _do_post
+    return await request.post(
+  File "/Users/Maryna/Documents/RickMorty/venv/lib/python3.8/site-packages/telegram/request/_baserequest.py", line 200, in post
+    result = await self._request_wrapper(
+  File "/Users/Maryna/Documents/RickMorty/venv/lib/python3.8/site-packages/telegram/request/_baserequest.py", line 340, in _request_wrapper
+    raise exc
+  File "/Users/Maryna/Documents/RickMorty/venv/lib/python3.8/site-packages/telegram/request/_baserequest.py", line 330, in _request_wrapper
+    code, payload = await self.do_request(
+  File "/Users/Maryna/Documents/RickMorty/venv/lib/python3.8/site-packages/telegram/request/_httpxrequest.py", line 278, in do_request
+    raise TimedOut(
+telegram.error.TimedOut: Pool timeout: All connections in the connection pool are occupied. Request was *not* sent to Telegram. Consider adjusting the connection pool size or the pool timeout.
+nohup: python4: No such file or directory
